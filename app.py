@@ -121,11 +121,13 @@ def _require_auth():
     st.markdown(
         f"""
         <div style="display:flex;justify-content:center">
-            <button onclick="window.parent.location.href='{auth_url}'"
-                style="background:#1DB954;color:#000;font-weight:700;font-size:16px;
-                       border:none;border-radius:500px;padding:14px 40px;cursor:pointer;">
-                Connect with Spotify
-            </button>
+            <a href="{auth_url}" target="_top" style="text-decoration:none;">
+                <div style="background:#1DB954;color:#000;font-weight:700;font-size:16px;
+                            border-radius:500px;padding:14px 40px;cursor:pointer;
+                            display:inline-block;">
+                    Connect with Spotify
+                </div>
+            </a>
         </div>
         """,
         unsafe_allow_html=True,
