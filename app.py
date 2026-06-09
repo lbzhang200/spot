@@ -119,11 +119,15 @@ def _require_auth():
     )
     auth_url = get_auth_url(REDIRECT_URI, st.session_state)
     st.markdown(
-        f'<div style="display:flex;justify-content:center">'
-        f'<a href="{auth_url}" target="_self">'
-        f'<button style="background:#1DB954;color:#000;font-weight:700;font-size:16px;'
-        f'border:none;border-radius:500px;padding:14px 40px;cursor:pointer;">'
-        f'Connect with Spotify</button></a></div>',
+        f"""
+        <div style="display:flex;justify-content:center">
+            <button onclick="window.parent.location.href='{auth_url}'"
+                style="background:#1DB954;color:#000;font-weight:700;font-size:16px;
+                       border:none;border-radius:500px;padding:14px 40px;cursor:pointer;">
+                Connect with Spotify
+            </button>
+        </div>
+        """,
         unsafe_allow_html=True,
     )
     st.stop()
