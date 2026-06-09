@@ -118,19 +118,20 @@ def _require_auth():
         unsafe_allow_html=True,
     )
     auth_url = get_auth_url(REDIRECT_URI, st.session_state)
-    st.markdown(
+    import streamlit.components.v1 as components
+    components.html(
         f"""
-        <div style="display:flex;justify-content:center">
+        <div style="display:flex;justify-content:center;padding:10px">
             <a href="{auth_url}" target="_top" style="text-decoration:none;">
                 <div style="background:#1DB954;color:#000;font-weight:700;font-size:16px;
                             border-radius:500px;padding:14px 40px;cursor:pointer;
-                            display:inline-block;">
+                            display:inline-block;font-family:sans-serif;">
                     Connect with Spotify
                 </div>
             </a>
         </div>
         """,
-        unsafe_allow_html=True,
+        height=70,
     )
     st.stop()
 
