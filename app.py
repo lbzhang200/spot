@@ -65,6 +65,13 @@ st.markdown(
     .track-title { font-weight: 600; font-size: 14px; }
     .track-sub { color: #b3b3b3; font-size: 12px; }
     a { color: #1DB954 !important; text-decoration: none; }
+    .stLinkButton > a {
+        background-color: #1DB954 !important; color: #000000 !important;
+        font-weight: 700 !important; border-radius: 500px !important;
+        padding: 0.75rem 2.5rem !important; font-size: 16px !important;
+        border: none !important;
+    }
+    .stLinkButton > a:hover { background-color: #1ed760 !important; }
     .api-warning {
         background: #2a1f00; border-left: 4px solid #FF9800;
         padding: 12px 16px; border-radius: 6px; margin-bottom: 16px;
@@ -118,21 +125,8 @@ def _require_auth():
         unsafe_allow_html=True,
     )
     auth_url = get_auth_url(REDIRECT_URI, st.session_state)
-    import streamlit.components.v1 as components
-    components.html(
-        f"""
-        <div style="display:flex;justify-content:center;padding:10px">
-            <a href="{auth_url}" target="_top" style="text-decoration:none;">
-                <div style="background:#1DB954;color:#000;font-weight:700;font-size:16px;
-                            border-radius:500px;padding:14px 40px;cursor:pointer;
-                            display:inline-block;font-family:sans-serif;">
-                    Connect with Spotify
-                </div>
-            </a>
-        </div>
-        """,
-        height=70,
-    )
+    col = st.columns([1, 1, 1])[1]
+    col.link_button("🎵 Connect with Spotify", auth_url, use_container_width=True)
     st.stop()
 
 
